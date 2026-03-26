@@ -1,31 +1,27 @@
-# Gold Tier Autonomous Employee
+# GOLD TIER AUTONOMOUS EMPLOYEE
 
-## Perception Layer
-Filesystem watcher monitors:
-- Needs_Action
-- Pending_Approval
-- Queue
+Perception Layer
+- Vault watcher
+- Queue watcher
 
-## Reasoning Layer
-Planner agent executes Ralph Wiggum loop
+Reasoning Layer
+- Planner agent
+- Ralph Wiggum loop
 
-## Action Layer
-Skills:
-- Odoo integration
-- Social media
-- weekly audit
-- logging
+Action Layer
+- Odoo MCP
+- Social media skills
 
-## Resilience
-Retry + queue fallback
+Resilience
+- retry
+- queue fallback
 
-## Weekly Audit
-Generates Monday CEO briefing
+Audit
+- weekly CEO report
 
-## Domain Expansion
-Personal + Business vaults
+Logging
+- JSON logs
 
-## Logging
-JSON logs in Vault/Logs
-
-System runs autonomously.
+Domains
+- Personal
+- Business

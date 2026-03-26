@@ -1,31 +1,29 @@
-import cron from "node-cron";
 import fs from "fs";
+import { getFinancials } from "../../mcp/accounting/odoo.js";
 
-cron.schedule("0 9 * * 1", () => {
+export async function runAudit(){
 
-  let completed = 0;
+let completed=0
 
-  if (fs.existsSync("Vault/Business/Done")) {
-    completed = fs.readdirSync("Vault/Business/Done").length;
-  }
+if(fs.existsSync("Vault/Business/Done"))
+completed=fs.readdirSync("Vault/Business/Done").length
 
-  const report = `
-# Monday Morning CEO Briefing
+const finance=await getFinancials()
+
+const report=`
+
+CEO WEEKLY BRIEFING
 
 Completed Tasks: ${completed}
-Revenue: TBD
-Bottlenecks: None
-Optimization: Automate approvals
+
+Revenue: ${finance.revenue}
+
+Expenses: ${finance.expenses}
 
 Generated: ${new Date().toISOString()}
-`;
 
-  fs.writeFileSync(
-    "Vault/Briefings/Monday_CEO.md",
-    report
-  );
+`
 
-  console.log("CEO Briefing Generated");
-});
+fs.writeFileSync("Vault/Briefings/CEO.md",report)
 
-console.log("Weekly Audit Running...");
+}
